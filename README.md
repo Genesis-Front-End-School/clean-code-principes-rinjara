@@ -13,7 +13,7 @@ styling.
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [Demo](#demo)
-- [Performance] (#performance)
+- [Performance](#performance)
 - [Contributing](#contributing)
 
 ## Getting Started

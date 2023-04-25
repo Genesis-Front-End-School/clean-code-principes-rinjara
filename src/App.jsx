@@ -3,12 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 
-const SharedLayout = lazy(() =>
-  import('./components/SharedLayout/SharedLayout.jsx')
-);
-const Courses = lazy(() => import('./pages/Courses/Courses.jsx'));
-const Course = lazy(() => import('./pages/Course/Course.jsx'));
-const Loader = lazy(() => import('./components/Loader/Loader.jsx'));
+const SharedLayout = lazy(() => import('./components/SharedLayout'));
+const Courses = lazy(() => import('./pages/Courses'));
+const Course = lazy(() => import('./pages/Course'));
+const Loader = lazy(() => import('./components/Loader'));
 
 const theme = createTheme();
 

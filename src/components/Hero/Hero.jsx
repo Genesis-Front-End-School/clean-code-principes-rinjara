@@ -1,7 +1,7 @@
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import { Notify } from 'notiflix';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Notify } from 'notiflix';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { load } from '../../services/localStorage/storage';
 
 const Hero = () => {

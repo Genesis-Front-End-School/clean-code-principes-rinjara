@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import CoursePage from '../../components/CoursePage/CoursePage';
-import { getCourse } from '../../services/api/fetchApi';
 import { useParams } from 'react-router-dom';
-import SideBar from '../../components/SideBar/SideBar';
 import { useTheme } from '@mui/material';
+import SideBar from '../../components/SideBar';
+import CoursePage from '../../components/CoursePage';
+import Loader from '../../components/Loader';
+import { getCourse } from '../../services/api/fetchApi';
 import { load, save } from '../../services/localStorage/storage';
-import Loader from '../../components/Loader/Loader';
 
 const Course = () => {
   const [courseData, setCourseData] = useState(null);
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   const [lessonNumber, setLessonNumber] = useState(0);
   const [isCourseLoading, setIsCourseLoading] = useState(true);
   const { courseId } = useParams();
@@ -33,11 +33,11 @@ const Course = () => {
   const drawerWidth = 340;
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setIsOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setIsOpen(false);
   };
 
   const handleLessonsChange = function (lessonOrder) {
@@ -49,7 +49,7 @@ const Course = () => {
   };
 
   const usedData = {
-    isOpen: open,
+    isOpen: isOpen,
     handleDrawerOpen: handleDrawerOpen,
     handleDrawerClose: handleDrawerClose,
     drawerWidth: drawerWidth,

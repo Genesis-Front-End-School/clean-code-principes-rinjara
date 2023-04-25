@@ -1,8 +1,8 @@
-import { Notify } from 'notiflix';
 import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
+import { Notify } from 'notiflix';
+import Loader from '../Loader';
 import { load, save } from '../../services/localStorage/storage';
-import Loader from '../Loader/Loader';
 
 const VideoPlayer = ({ URL, muted }) => {
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -50,7 +50,7 @@ const VideoPlayer = ({ URL, muted }) => {
   };
 
   const handlePlayerError = e => {
-    if (e && e.target && e.target.error && e.target.error.code) {
+    if (e?.target?.error?.code) {
       switch (e.target.error.code) {
         case 1:
           Notify.warning('The video is not found or has been removed');

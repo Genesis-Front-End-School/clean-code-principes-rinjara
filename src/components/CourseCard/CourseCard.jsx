@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import ReactPlayer from 'react-player';
 import {
   Button,
   Card,
@@ -11,23 +14,21 @@ import {
   Typography,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
-import { NavLink } from 'react-router-dom';
-import { save } from '../../services/localStorage/storage.js';
+import { proxyURL } from '../../helpers/constants';
+import { save } from '../../services/localStorage/storage';
 import { ExpandMore } from './CourseCard.styled';
 
 const CourseCard = ({ data }) => {
-  const [hovered, setHovered] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const [isHovered, setIsHovered] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const { id, title, previewImageLink, lessonsCount, rating, meta } = data;
   const { skills, courseVideoPreview } = meta;
-  const hasVideo = courseVideoPreview !== undefined;
+  const hasVideo = !!courseVideoPreview;
+
+  const handleExpandClick = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const handleClick = () => {
     save('lastCourseId', id);
@@ -36,14 +37,14 @@ const CourseCard = ({ data }) => {
   return (
     <Card
       sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {hasVideo && hovered ? (
+      {hasVideo && isHovered ? (
         <ReactPlayer
-          url={`https://cors-proxy.fringe.zone/${courseVideoPreview.link}`}
-          playing={hovered}
-          loop={hovered}
+          url={`${proxyURL}${courseVideoPreview.link}`}
+          playing={isHovered}
+          loop={isHovered}
           muted={true}
           controls={false}
           width="100%"
@@ -83,33 +84,34 @@ const CourseCard = ({ data }) => {
           Rating: {rating}
         </Typography>
 
-        {skills && (
-          <CardActions disableSpacing style={{ padding: 0 }}>
-            <Typography variant="h6" color="text.secondary">
-              Skills
-            </Typography>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="more"
-            >
-              <ExpandMoreIcon />
-            </ExpandMore>
-          </CardActions>
-        )}
-        {skills && (
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <List>
-                {skills.map(skill => (
-                  <ListItem key={skill}>
-                    <ListItemText primary={skill} />
-                  </ListItem>
-                ))}
-              </List>
-            </CardContent>
-          </Collapse>
+        {skills?.length > 0 && (
+          <>
+            <CardActions disableSpacing style={{ padding: 0 }}>
+              <Typography variant="h6" color="text.secondary">
+                Skills
+              </Typography>
+              <ExpandMore
+                expand={isExpanded}
+                onClick={handleExpandClick}
+                aria-expanded={isExpanded}
+                aria-label="more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+
+            <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <List>
+                  {skills.map(skill => (
+                    <ListItem key={skill}>
+                      <ListItemText primary={skill} />
+                    </ListItem>
+                  ))}
+                </List>
+              </CardContent>
+            </Collapse>
+          </>
         )}
       </CardContent>
     </Card>

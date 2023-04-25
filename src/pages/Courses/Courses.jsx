@@ -1,9 +1,9 @@
-import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import CoursesList from '../../components/CoursesList/CoursesList';
-import Hero from '../../components/Hero/Hero';
-import Loader from '../../components/Loader/Loader';
-import PaginationControlled from '../../components/Pagination/PaginationControlled';
+import { Container } from '@mui/system';
+import CoursesList from '../../components/CoursesList';
+import Hero from '../../components/Hero';
+import Loader from '../../components/Loader';
+import PaginationControlled from '../../components/Pagination';
 import { getCoursesList } from '../../services/api/fetchApi';
 
 const Courses = () => {
@@ -16,6 +16,7 @@ const Courses = () => {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentCourses = courses.slice(startIndex, endIndex);
+  const shouldRenderElements = courses?.length > 0;
 
   useEffect(() => {
     getCoursesList()
@@ -31,7 +32,7 @@ const Courses = () => {
     <section>
       <Hero />
       {isCoursesLoading && <Loader />}
-      {courses && (
+      {shouldRenderElements && (
         <Container>
           <CoursesList courses={currentCourses} />
           <PaginationControlled

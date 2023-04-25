@@ -1,11 +1,12 @@
-import { Button, Toolbar } from '@mui/material';
-import { Notify } from 'notiflix';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { load } from '../../services/localStorage/storage';
+import { Notify } from 'notiflix';
+import { Button, Toolbar } from '@mui/material';
 import { ReactComponent as Logo } from '../../icons/logo.svg';
+import { load } from '../../services/localStorage/storage';
 
 const NavBar = () => {
   const navigate = useNavigate();
+
   const handleClick = () => {
     const lastCourse = load('lastCourseId');
     if (!lastCourse) {

@@ -1,10 +1,10 @@
-import { AppBar } from '@mui/material';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
-import Loader from '../../components/Loader/Loader';
+import { AppBar } from '@mui/material';
+import NavBar from '../NavBar';
+import Loader from '../../components/Loader';
 
-function SharedLayout() {
+const SharedLayout = () => {
   return (
     <>
       <AppBar position="relative">
@@ -17,6 +17,6 @@ function SharedLayout() {
       </main>
     </>
   );
-}
+};
 
 export default SharedLayout;

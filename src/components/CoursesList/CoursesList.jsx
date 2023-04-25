@@ -1,6 +1,6 @@
-import { Grid } from '@mui/material';
 import React from 'react';
-import CourseCard from '../CourseCard/CourseCard';
+import { Grid } from '@mui/material';
+import CourseCard from '../CourseCard';
 
 const CoursesList = ({ courses }) => {
   return (

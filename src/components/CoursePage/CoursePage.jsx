@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import { Box, CardMedia } from '@mui/material';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import { Box, CardMedia, Typography } from '@mui/material';
+import VideoPlayer from '../VideoPlayer';
+import { proxyURL } from '../../helpers/constants';
 import { Wrapper } from './CoursePage.styled';
 
 const CoursePage = ({ course, usedData }) => {
@@ -48,9 +48,7 @@ const CoursePage = ({ course, usedData }) => {
         }}
       >
         <VideoPlayer
-          URL={`https://cors-proxy.fringe.zone/${
-            course.lessons[usedData.lesson].link
-          }`}
+          URL={`${proxyURL}${course.lessons[usedData.lesson].link}`}
           muted={false}
         />
         <div>

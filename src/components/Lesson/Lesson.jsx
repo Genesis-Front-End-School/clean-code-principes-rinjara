@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Box, CardActionArea } from '@mui/material';
 import ReactPlayer from 'react-player';
 import { Notify } from 'notiflix';
+import {
+  Box,
+  CardActionArea,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
+import { proxyURL } from '../../helpers/constants';
 
 const Lesson = ({ lessonData, handleLessonsChange, index }) => {
-  const [hovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const shouldPlayVideo = isHovered && lessonData.status !== 'locked';
 
   return (
     <>
@@ -21,8 +26,8 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
             lg: 345,
           },
         }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <CardActionArea
           onClick={() => {
@@ -43,11 +48,11 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
               },
             }}
           >
-            {hovered && lessonData.status !== 'locked' ? (
+            {shouldPlayVideo ? (
               <ReactPlayer
-                url={`https://cors-proxy.fringe.zone/${lessonData.link}`}
-                playing={hovered}
-                loop={hovered}
+                url={`${proxyURL}${lessonData.link}`}
+                playing={isHovered}
+                loop={isHovered}
                 muted={true}
                 controls={false}
                 width="100%"

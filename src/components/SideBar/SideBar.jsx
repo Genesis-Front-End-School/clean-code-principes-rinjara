@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Divider,
   Drawer,
@@ -8,14 +9,13 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Lesson from '../Lesson/Lesson';
+import Lesson from '../Lesson';
 import { DrawerHeader } from './SideBar.styled';
 
-function SideBar({ usedData, course, handleLessonsChange }) {
+const SideBar = ({ usedData, course, handleLessonsChange }) => {
   const theme = useTheme();
   return (
     <>
@@ -87,6 +87,6 @@ function SideBar({ usedData, course, handleLessonsChange }) {
       </Drawer>
     </>
   );
-}
+};
 
 export default SideBar;
