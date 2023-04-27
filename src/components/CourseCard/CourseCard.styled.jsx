@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { IconButton } from '@mui/material';
+import { IconButton, CardActions } from '@mui/material';
 
 export const ExpandMore = styled(props => {
   const { expand, ...other } = props;
@@ -10,4 +10,9 @@ export const ExpandMore = styled(props => {
   transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
   }),
+}));
+
+export const StyledCardActions = styled(CardActions)(() => ({
+  display: 'flex',
+  justifyContent: 'center',
 }));

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, CardMedia, Typography } from '@mui/material';
 import VideoPlayer from '../VideoPlayer';
-import { proxyURL } from '../../helpers/constants';
+import { PROXY_URL } from '../../helpers/constants';
 import { Wrapper } from './CoursePage.styled';
 
 const CoursePage = ({ course, usedData }) => {
@@ -48,7 +48,7 @@ const CoursePage = ({ course, usedData }) => {
         }}
       >
         <VideoPlayer
-          URL={`${proxyURL}${course.lessons[usedData.lesson].link}`}
+          URL={`${PROXY_URL}${course.lessons[usedData.lesson].link}`}
           muted={false}
         />
         <div>

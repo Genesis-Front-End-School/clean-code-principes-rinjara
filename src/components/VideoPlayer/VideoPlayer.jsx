@@ -6,8 +6,8 @@ import { load, save } from '../../services/localStorage/storage';
 
 const VideoPlayer = ({ URL, muted }) => {
   const [isVideoLoading, setIsVideoLoading] = useState(true);
-  const playerRef = useRef(null);
   const [playbackRate, setPlaybackRate] = useState(1.0);
+  const playerRef = useRef(null);
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -80,6 +80,11 @@ const VideoPlayer = ({ URL, muted }) => {
     }
   };
 
+  const setVideoProgress = () => {
+    playerRef.current.seekTo(getVideoProgress());
+    setIsVideoLoading(false);
+  };
+
   return (
     <>
       {isVideoLoading && <Loader />}
@@ -93,10 +98,7 @@ const VideoPlayer = ({ URL, muted }) => {
         muted={muted}
         controls={true}
         onProgress={handleProgress}
-        onReady={() => {
-          playerRef.current.seekTo(getVideoProgress());
-          setIsVideoLoading(false);
-        }}
+        onReady={setVideoProgress}
         onEnded={handleVideoEnd}
         onError={handlePlayerError}
         ref={playerRef}
