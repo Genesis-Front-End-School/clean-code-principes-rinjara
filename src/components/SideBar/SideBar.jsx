@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Divider,
   Drawer,
   IconButton,
   List,
-  ListItem,
-  Toolbar,
   Typography,
   useTheme,
 } from '@mui/material';
@@ -13,13 +11,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Lesson from '../Lesson';
-import { DrawerHeader } from './SideBar.styled';
+import { DrawerHeader, StyledToolbar, StyledListItem } from './SideBar.styled';
 
 const SideBar = ({ usedData, course, handleLessonsChange }) => {
   const theme = useTheme();
+  const sortedLessons = useMemo(
+    () => [...course.lessons].sort((a, b) => a.order - b.order),
+    [course.lessons]
+  );
+
   return (
     <>
-      <Toolbar style={{ position: 'absolute', right: 8, top: 0, gap: 16 }}>
+      <StyledToolbar>
         <Typography
           variant="h6"
           noWrap
@@ -43,7 +46,7 @@ const SideBar = ({ usedData, course, handleLessonsChange }) => {
         >
           <MenuIcon />
         </IconButton>
-      </Toolbar>
+      </StyledToolbar>
       <Drawer
         sx={{
           flexShrink: 0,
@@ -70,18 +73,16 @@ const SideBar = ({ usedData, course, handleLessonsChange }) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
+
         <List>
-          {course.lessons.map((lesson, index) => (
-            <ListItem
-              key={lesson.id}
-              style={{ display: 'flex', flexDirection: 'column' }}
-            >
+          {sortedLessons.map((lesson, index) => (
+            <StyledListItem key={lesson.id}>
               <Lesson
                 index={index}
                 lessonData={lesson}
                 handleLessonsChange={handleLessonsChange}
               />
-            </ListItem>
+            </StyledListItem>
           ))}
         </List>
       </Drawer>

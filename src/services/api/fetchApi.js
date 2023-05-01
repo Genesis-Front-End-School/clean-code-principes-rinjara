@@ -16,6 +16,7 @@ export const getToken = async () => {
     const token = response.data.token;
     setToken(token);
   } catch (error) {
+    Notify.failure('Oooops! Something goes wrong. Please, try again later!');
     throw error;
   }
 };

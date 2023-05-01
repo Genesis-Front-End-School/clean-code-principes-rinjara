@@ -13,6 +13,8 @@ const Course = () => {
   const [lessonNumber, setLessonNumber] = useState(0);
   const [isCourseLoading, setIsCourseLoading] = useState(true);
   const { courseId } = useParams();
+  const theme = useTheme();
+  const drawerWidth = 340;
 
   useEffect(() => {
     getCourse(courseId)
@@ -26,11 +28,8 @@ const Course = () => {
           }
         }
       })
-      .then(() => setIsCourseLoading(false));
+      .finally(() => setIsCourseLoading(false));
   }, [courseId]);
-
-  const theme = useTheme();
-  const drawerWidth = 340;
 
   const handleDrawerOpen = () => {
     setIsOpen(true);
@@ -40,7 +39,7 @@ const Course = () => {
     setIsOpen(false);
   };
 
-  const handleLessonsChange = function (lessonOrder) {
+  const handleLessonsChange = lessonOrder => {
     const lessonProgress = load('lessonProgress') || {};
     lessonProgress[courseId] = lessonOrder;
     save('lessonProgress', lessonProgress);

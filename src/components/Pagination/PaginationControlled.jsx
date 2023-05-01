@@ -1,18 +1,14 @@
 import React from 'react';
-import { Stack, Pagination } from '@mui/material';
+import { Stack } from '@mui/material';
+import { StyledPagination } from './PaginationControlled.styled';
 
 const PaginationControlled = ({ totalPages, currentPage, handleChange }) => {
   return (
     <Stack spacing={2} alignContent="center">
-      <Pagination
+      <StyledPagination
         count={totalPages}
         page={currentPage}
         onChange={handleChange}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginBottom: '50px',
-        }}
       />
     </Stack>
   );

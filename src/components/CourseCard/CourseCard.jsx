@@ -14,9 +14,9 @@ import {
   Typography,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { proxyURL } from '../../helpers/constants';
+import { PROXY_URL } from '../../helpers/constants';
 import { save } from '../../services/localStorage/storage';
-import { ExpandMore } from './CourseCard.styled';
+import { ExpandMore, StyledCardActions } from './CourseCard.styled';
 
 const CourseCard = ({ data }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -42,7 +42,7 @@ const CourseCard = ({ data }) => {
     >
       {hasVideo && isHovered ? (
         <ReactPlayer
-          url={`${proxyURL}${courseVideoPreview.link}`}
+          url={`${PROXY_URL}${courseVideoPreview.link}`}
           playing={isHovered}
           loop={isHovered}
           muted={true}
@@ -62,7 +62,7 @@ const CourseCard = ({ data }) => {
         />
       )}
 
-      <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
+      <StyledCardActions>
         <Button
           variant="contained"
           color="primary"
@@ -72,7 +72,7 @@ const CourseCard = ({ data }) => {
         >
           View course
         </Button>
-      </CardActions>
+      </StyledCardActions>
       <CardContent>
         <Typography gutterBottom variant="h6" component="h2">
           {title}

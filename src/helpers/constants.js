@@ -1,1 +1,1 @@
-export const proxyURL = 'https://cors-proxy.fringe.zone/';
+export const PROXY_URL = 'https://cors-proxy.fringe.zone/';

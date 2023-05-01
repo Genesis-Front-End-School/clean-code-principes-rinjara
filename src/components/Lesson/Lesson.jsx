@@ -9,11 +9,21 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-import { proxyURL } from '../../helpers/constants';
+import { PROXY_URL } from '../../helpers/constants';
 
 const Lesson = ({ lessonData, handleLessonsChange, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const shouldPlayVideo = isHovered && lessonData.status !== 'locked';
+  const lessonVideoURL = `${PROXY_URL}${lessonData.link}`;
+  const lessonImgURL = `${lessonData.previewImageLink}/lesson-${lessonData.order}.webp`;
+
+  const handleClickOnCard = () => {
+    if (lessonData.status === 'locked') {
+      Notify.failure('This lesson is locked. Please, follow the order!');
+      return;
+    }
+    handleLessonsChange(index);
+  };
 
   return (
     <>
@@ -22,35 +32,23 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
       </Typography>
       <Card
         sx={{
-          maxWidth: {
-            lg: 345,
+          width: {
+            xs: '380px',
+            sm: '300px',
           },
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <CardActionArea
-          onClick={() => {
-            if (lessonData.status === 'locked') {
-              Notify.failure(
-                'This lesson is locked. Please, follow the order!'
-              );
-              return;
-            }
-            handleLessonsChange(index);
-          }}
-        >
+        <CardActionArea onClick={handleClickOnCard}>
           <Box
             sx={{
               height: 150,
-              maxWidth: {
-                md: '300px',
-              },
             }}
           >
             {shouldPlayVideo ? (
               <ReactPlayer
-                url={`${proxyURL}${lessonData.link}`}
+                url={lessonVideoURL}
                 playing={isHovered}
                 loop={isHovered}
                 muted={true}
@@ -63,7 +61,7 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
                 component="img"
                 width="100%"
                 height="100%"
-                image={`${lessonData.previewImageLink}/lesson-${lessonData.order}.webp`}
+                image={lessonImgURL}
                 alt={`lesson-${lessonData.order}`}
                 style={{ display: 'block' }}
               />
