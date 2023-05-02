@@ -15,9 +15,15 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "indent": ["error", 2],
+    "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "no-undef": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
