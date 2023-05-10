@@ -3,19 +3,17 @@ import {
   Divider,
   Drawer,
   IconButton,
-  List,
   Typography,
   useTheme,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Lesson from 'components/Lesson';
+import LessonsList from 'components/SideBarComponents/LessonsList';
 import {
   DrawerHeader,
   StyledToolbar,
-  StyledListItem,
-} from 'components/SideBar/SideBar.styled';
+} from 'components/SideBarComponents/SideBar/SideBar.styled';
 
 interface SideBarProps {
   usedData: UsedData;
@@ -88,17 +86,10 @@ const SideBar: React.FC<SideBarProps> = ({
         </DrawerHeader>
         <Divider />
 
-        <List>
-          {sortedLessons.map((lesson, index) => (
-            <StyledListItem key={lesson.id}>
-              <Lesson
-                index={index}
-                lessonData={lesson}
-                handleLessonsChange={handleLessonsChange}
-              />
-            </StyledListItem>
-          ))}
-        </List>
+        <LessonsList
+          sortedLessons={sortedLessons}
+          handleLessonsChange={handleLessonsChange}
+        />
       </Drawer>
     </>
   );

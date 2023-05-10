@@ -4,22 +4,14 @@ import ReactPlayer from 'react-player';
 import {
   Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
-  Collapse,
-  List,
-  ListItem,
-  ListItemText,
   Typography,
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { PROXY_URL } from 'helpers/constants';
 import { save } from 'services/localStorage/storage';
-import {
-  ExpandMore,
-  StyledCardActions,
-} from 'components/CourseCard/CourseCard.styled';
+import SkillsList from 'components/MainPage/SkillsList/SkillsList';
+import { StyledCardActions } from 'components/MainPage/CourseCard/CourseCard.styled';
 
 type CourseCardProps = {
   data: Course;
@@ -92,33 +84,11 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
         </Typography>
 
         {skills?.length! > 0 && (
-          <>
-            <CardActions disableSpacing style={{ padding: 0 }}>
-              <Typography variant="h6" color="text.secondary">
-                Skills
-              </Typography>
-              <ExpandMore
-                expand={isExpanded ? 1 : 0}
-                onClick={handleExpandClick}
-                aria-expanded={isExpanded}
-                aria-label="more"
-              >
-                <ExpandMoreIcon />
-              </ExpandMore>
-            </CardActions>
-
-            <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <List>
-                  {skills?.map((skill: string) => (
-                    <ListItem key={skill}>
-                      <ListItemText primary={skill} />
-                    </ListItem>
-                  ))}
-                </List>
-              </CardContent>
-            </Collapse>
-          </>
+          <SkillsList
+            isExpanded={isExpanded}
+            handleExpandClick={handleExpandClick}
+            skills={skills}
+          />
         )}
       </CardContent>
     </Card>
