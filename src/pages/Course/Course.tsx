@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTheme } from '@mui/material';
 import SideBar from 'components/SideBarComponents/SideBar';
-import CoursePage from 'components/CoursePage';
+import CoursePage from 'components/CoursePageComponents/CoursePage';
 import Loader from 'components/Loader';
 import { getCourse } from 'services/api/fetchApi';
 import { load, save } from 'services/localStorage/storage';

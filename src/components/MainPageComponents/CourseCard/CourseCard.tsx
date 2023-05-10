@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 import { PROXY_URL } from 'helpers/constants';
 import { save } from 'services/localStorage/storage';
-import SkillsList from 'components/MainPage/SkillsList/SkillsList';
-import { StyledCardActions } from 'components/MainPage/CourseCard/CourseCard.styled';
+import SkillsList from 'components/MainPageComponents/SkillsList/SkillsList';
+import { StyledCardActions } from 'components/MainPageComponents/CourseCard/CourseCard.styled';
 
 type CourseCardProps = {
   data: Course;

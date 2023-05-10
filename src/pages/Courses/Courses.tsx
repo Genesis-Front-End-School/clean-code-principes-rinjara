@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from '@mui/system';
-import CoursesList from 'components/MainPage/CoursesList';
-import Hero from 'components/MainPage/Hero';
+import CoursesList from 'components/MainPageComponents/CoursesList';
+import Hero from 'components/MainPageComponents/Hero';
 import Loader from 'components/Loader';
 import PaginationControlled from 'components/Pagination';
 import { getCoursesList } from 'services/api/fetchApi';

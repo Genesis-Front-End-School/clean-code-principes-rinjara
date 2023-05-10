@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ExpandMore } from 'components/MainPage/CourseCard/CourseCard.styled';
+import { ExpandMore } from 'components/MainPageComponents/CourseCard/CourseCard.styled';
 
 type SkillsListProps = {
   isExpanded: boolean;

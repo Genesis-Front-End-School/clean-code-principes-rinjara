@@ -13,6 +13,7 @@ styling.
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [Demo](#demo)
+- [Project architecture](#project-architecture)
 - [Performance](#performance)
 - [Contributing](#contributing)
 
@@ -39,6 +40,62 @@ Clone the repository: git clone
 
 You can see a live demo of this project
 [here](https://rinjara.github.io/courses-for-genesis/).
+
+## Project architecture
+
+The application has the following layers:
+
+1.Pages:
+
+- Course Page.
+- Courses Page.
+
+  2.Components:
+
+Components combined based on destination - used on the same page - grouped to
+the same folder, shared components represented by themselves.
+
+- MainPageComponents: CoursesList, CourseCard, Hero, SkillsList.
+- CoursePageComponents: CoursePage, VideoPlayer.
+- SideBarComponents: SideBar, LessonsList, Lesson.
+
+Shared ones:
+
+- Loader
+- Sharedlayout
+- NavBar
+- Pagination
+
+  3.Services:
+
+- api - separate service for accessing and retrieving data from the database.
+- localStorage - separate service for accessing and retrieving data from the
+  local Storage.
+
+  4.Helpers:
+
+- constants
+
+#### The project seems to be
+
+- utilizing the Feature-sliced design approach, which is built on the principle
+  of dividing functions and components into "features" or functional parts of
+  the application, which are organized according to their belonging to a
+  particular functional group. This approach helps to better organize the
+  codebase and make it more maintainable and scalable.
+
+- using the Mono-repo approach, where all the code for the project is stored in
+  a single repository. This approach can simplify the management of dependencies
+  and facilitate collaboration among developers.
+
+- utilizing Container components for storing the business logic and working with
+  the state of the application. This architectural pattern separates the
+  presentation logic from the business logic, making it easier to manage and
+  test the application.
+
+Overall, these architectural principles and patterns help to create a
+well-organized, maintainable, and scalable codebase, which is essential for the
+long-term success of any project.
 
 ## Performance
 

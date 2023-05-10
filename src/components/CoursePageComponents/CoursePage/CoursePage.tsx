@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, CardMedia, Theme, Typography } from '@mui/material';
-import VideoPlayer from 'components/VideoPlayer';
+import VideoPlayer from 'components/CoursePageComponents/VideoPlayer';
 import { PROXY_URL } from 'helpers/constants';
-import { Wrapper } from 'components/CoursePage/CoursePage.styled';
+import { Wrapper } from 'components/CoursePageComponents/CoursePage/CoursePage.styled';
 
 interface CoursePageProps {
   course: Course;
