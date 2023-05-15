@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import CourseCard from 'components/CourseCard';
+import CourseCard from 'components/MainPageComponents/CourseCard';
 
 interface CourseListProps {
   courses: Course[];
