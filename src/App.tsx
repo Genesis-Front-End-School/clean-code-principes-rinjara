@@ -1,18 +1,17 @@
 import React, { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import ThemeToggleBtn from 'components/ThemeToggleBtn/ThemeToggleBtn';
+import { ColorModeProvider } from 'context/ColorModeContextProvider';
 
 const SharedLayout = lazy(() => import('components/SharedLayout'));
 const Courses = lazy(() => import('pages/Courses'));
 const Course = lazy(() => import('pages/Course'));
 const Loader = lazy(() => import('components/Loader'));
 
-const theme = createTheme();
-
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <ColorModeProvider>
       <CssBaseline />
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -22,8 +21,10 @@ const App = () => {
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
         </Routes>
+        <CssBaseline />
+        <ThemeToggleBtn />
       </Suspense>
-    </ThemeProvider>
+    </ColorModeProvider>
   );
 };
 
