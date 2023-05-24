@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import IconButton from '@mui/material/IconButton';
+import { ColorModeContext } from 'context/ColorModeContextProvider';
 import { useTheme } from '@mui/material/styles';
-import { ColorModeContext } from 'App';
 
 const ThemeToggleBtn = () => {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = useContext(ColorModeContext);
 
   return (
     <Box
