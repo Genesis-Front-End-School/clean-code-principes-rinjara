@@ -1,7 +1,7 @@
 import { Notify } from 'notiflix';
 import instance from 'services/api/axiosConfig';
 
-const setToken = (token?: string): string => {
+export const setToken = (token?: string): string => {
   if (!token) return (instance.defaults.headers.common.authorization = '');
 
   return (instance.defaults.headers.common.authorization = `Bearer ${token}`);

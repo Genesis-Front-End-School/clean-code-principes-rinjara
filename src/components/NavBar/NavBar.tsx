@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Notify } from 'notiflix';
 import { Button, Toolbar } from '@mui/material';
-import Logo from '-!svg-react-loader!icons/logo.svg';
+import Logo from 'icons/logo.svg';
 import { load } from 'services/localStorage/storage';
 
 const NavBar = () => {
