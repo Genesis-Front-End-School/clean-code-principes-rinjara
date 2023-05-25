@@ -5,7 +5,7 @@ import SideBar from 'components/SideBarComponents/SideBar';
 import CoursePage from 'components/CoursePageComponents/CoursePage';
 import Loader from 'components/Loader';
 import { getCourse } from 'services/api/fetchApi';
-import { load, save } from 'services/localStorage/storage';
+import { load, save } from 'rinjara-course-comp-lib';
 
 const Course = () => {
   const [courseData, setCourseData] = useState<Course>();
