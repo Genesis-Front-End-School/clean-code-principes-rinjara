@@ -5,7 +5,7 @@ import { Button, Toolbar } from '@mui/material'
 import Logo from './icons/logo.svg'
 import { load } from '../../localStorage'
 
-const NavBar = () => {
+export const NavBar = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -30,5 +30,3 @@ const NavBar = () => {
     </Toolbar>
   )
 }
-
-export default NavBar

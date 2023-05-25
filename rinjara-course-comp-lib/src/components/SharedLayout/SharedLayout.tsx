@@ -1,10 +1,10 @@
 import React, { Fragment, Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 import { AppBar } from '@mui/material'
-import NavBar from '../NavBar'
-import Loader from '../Loader'
+import { NavBar } from '../NavBar'
+import { Loader } from '../Loader'
 
-const SharedLayout = () => {
+export const SharedLayout = () => {
   return (
     <Fragment>
       <AppBar position='relative'>
@@ -18,5 +18,3 @@ const SharedLayout = () => {
     </Fragment>
   )
 }
-
-export default SharedLayout

@@ -1,3 +1,6 @@
 import React from 'react';
-declare const Hero: () => React.JSX.Element;
-export default Hero;
+interface HeroProps {
+    handleClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+export declare const Hero: React.FC<HeroProps>;
+export {};

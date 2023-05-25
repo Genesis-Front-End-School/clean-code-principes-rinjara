@@ -1,3 +1,2 @@
 import React from 'react';
-declare const SharedLayout: () => React.JSX.Element;
-export default SharedLayout;
+export declare const SharedLayout: () => React.JSX.Element;

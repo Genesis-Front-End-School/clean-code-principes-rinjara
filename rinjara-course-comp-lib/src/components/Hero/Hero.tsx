@@ -1,42 +1,32 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Notify } from 'notiflix';
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import { load } from 'rinjara-course-comp-lib';
+import React from 'react'
+import { Box, Button, Container, Stack, Typography } from '@mui/material'
+interface HeroProps {
+  handleClick: React.MouseEventHandler<HTMLButtonElement> | undefined
+}
 
-const Hero = () => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    const lastCourse = load('lastCourseId');
-    if (!lastCourse) {
-      Notify.info('Please, choose your course in the list below!');
-      return;
-    }
-    navigate(`/course/${lastCourse}`);
-  };
-
+export const Hero: React.FC<HeroProps> = ({ handleClick }) => {
   return (
     <Box
       sx={{
         bgcolor: 'background.paper',
         pt: 8,
-        pb: 6,
+        pb: 6
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth='sm'>
         <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
+          component='h1'
+          variant='h2'
+          align='center'
+          color='text.primary'
           gutterBottom
         >
           Genesis Academy
         </Typography>
         <Typography
-          variant="h5"
-          align="center"
-          color="text.secondary"
+          variant='h5'
+          align='center'
+          color='text.secondary'
           paragraph
         >
           Explore our catalog of courses available at Genesis Academy, a tech
@@ -46,17 +36,15 @@ const Hero = () => {
         </Typography>
         <Stack
           sx={{ pt: 4 }}
-          direction="row"
+          direction='row'
           spacing={2}
-          justifyContent="center"
+          justifyContent='center'
         >
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant='contained' onClick={handleClick}>
             Continue My Course
           </Button>
         </Stack>
       </Container>
     </Box>
-  );
-};
-
-export default Hero;
+  )
+}

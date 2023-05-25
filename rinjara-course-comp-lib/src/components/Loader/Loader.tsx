@@ -2,7 +2,7 @@ import React from 'react'
 import { Puff } from 'react-loader-spinner'
 import { Container } from './Loader.styled'
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <Container>
       <Puff
@@ -18,5 +18,3 @@ const Loader = () => {
     </Container>
   )
 }
-
-export default Loader

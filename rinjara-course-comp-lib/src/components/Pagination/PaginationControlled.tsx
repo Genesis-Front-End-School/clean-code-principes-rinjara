@@ -8,7 +8,7 @@ interface PaginationControlledProps {
   handleChange: (e: React.ChangeEvent<unknown>, page: number) => void
 }
 
-const PaginationControlled: React.FC<PaginationControlledProps> = ({
+export const PaginationControlled: React.FC<PaginationControlledProps> = ({
   totalPages,
   currentPage,
   handleChange
@@ -23,5 +23,3 @@ const PaginationControlled: React.FC<PaginationControlledProps> = ({
     </Stack>
   )
 }
-
-export default PaginationControlled

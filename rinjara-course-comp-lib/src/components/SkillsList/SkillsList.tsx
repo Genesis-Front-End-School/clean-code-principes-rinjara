@@ -17,7 +17,7 @@ type SkillsListProps = {
   skills?: string[]
 }
 
-const SkillsList: React.FC<SkillsListProps> = ({
+export const SkillsList: React.FC<SkillsListProps> = ({
   isExpanded,
   handleExpandClick,
   skills
@@ -52,5 +52,3 @@ const SkillsList: React.FC<SkillsListProps> = ({
     </Fragment>
   )
 }
-
-export default SkillsList

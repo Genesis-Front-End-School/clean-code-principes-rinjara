@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import { Notify } from 'notiflix'
-import Loader from '../Loader'
+import { Loader } from '../Loader'
 import { load, save } from '../../localStorage'
 import { Typography } from '@mui/material'
 
@@ -10,7 +10,7 @@ interface VideoPlayerProps {
   muted: boolean
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ URL, muted }) => {
+export const VideoPlayer: React.FC<VideoPlayerProps> = ({ URL, muted }) => {
   const [isVideoLoading, setIsVideoLoading] = useState(true)
   const [playbackRate, setPlaybackRate] = useState(1.0)
   const playerRef = useRef({} as ReactPlayer)
@@ -123,5 +123,3 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ URL, muted }) => {
     </Fragment>
   )
 }
-
-export default VideoPlayer

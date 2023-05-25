@@ -4,5 +4,5 @@ declare type SkillsListProps = {
     handleExpandClick: () => void;
     skills?: string[];
 };
-declare const SkillsList: React.FC<SkillsListProps>;
-export default SkillsList;
+export declare const SkillsList: React.FC<SkillsListProps>;
+export {};
