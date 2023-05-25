@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from '@mui/system';
-import CoursesList from 'components/MainPageComponents/CoursesList';
-import Hero from 'components/MainPageComponents/Hero';
-import Loader from 'components/Loader';
-import PaginationControlled from 'components/Pagination';
+import CoursesList from 'components/MainPage/CoursesList';
+import {
+  Hero,
+  load,
+  Loader,
+  PaginationControlled,
+} from 'rinjara-course-comp-lib';
 import { getCoursesList } from 'services/api/fetchApi';
+import { useNavigate } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 const Courses = () => {
   const [courses, setCourses] = useState([] as Course[]);
@@ -24,6 +29,16 @@ const Courses = () => {
       .then(() => setIsCoursesLoading(false));
   }, []);
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    const lastCourse = load('lastCourseId');
+    if (!lastCourse) {
+      Notify.info('Please, choose your course in the list below!');
+      return;
+    }
+    navigate(`/course/${lastCourse}`);
+  };
+
   const setPaginationPage = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -33,7 +48,7 @@ const Courses = () => {
 
   return (
     <section>
-      <Hero />
+      <Hero handleClick={handleClick} />
       {isCoursesLoading && <Loader />}
       {shouldRenderElements && (
         <Container>
